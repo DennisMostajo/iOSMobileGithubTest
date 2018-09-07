@@ -1,0 +1,58 @@
+PODS:
+  - Alamofire (4.7.3)
+  - DateToolsSwift (4.0.0)
+  - JWTDecode (2.1.1)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - PKHUD (5.1.0)
+  - Realm (3.8.0):
+    - Realm/Headers (= 3.8.0)
+  - Realm/Headers (3.8.0)
+  - RealmSwift (3.8.0):
+    - Realm (= 3.8.0)
+  - SwiftyJSON (4.1.0)
+  - Toast-Swift (3.0.1)
+  - XCGLogger (6.0.4):
+    - XCGLogger/Core (= 6.0.4)
+  - XCGLogger/Core (6.0.4):
+    - ObjcExceptionBridging
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - DateToolsSwift
+  - JWTDecode (~> 2.1)
+  - PKHUD (~> 5.0)
+  - RealmSwift
+  - SwiftyJSON
+  - Toast-Swift (~> 3.0.1)
+  - XCGLogger (~> 6.0.2)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - DateToolsSwift
+    - JWTDecode
+    - ObjcExceptionBridging
+    - PKHUD
+    - Realm
+    - RealmSwift
+    - SwiftyJSON
+    - Toast-Swift
+    - XCGLogger
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
+  JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  PKHUD: 62ea46a1e88c4def1da784878d199bb54c841e3c
+  Realm: 3fdae59de78838064e9f77638d7cdb7b8cff9dc8
+  RealmSwift: c990518b800e106d1f77099d3a4648c3b100337d
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+  XCGLogger: 4fc1bc0bdd5828cb8dc8da7a843536cda1bea8f3
+
+PODFILE CHECKSUM: eced7c8cd3ae5b7c7bfc51d3ff2635be24c37ca4
+
+COCOAPODS: 1.5.2

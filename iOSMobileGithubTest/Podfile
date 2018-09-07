@@ -1,0 +1,34 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+def shared_pods
+    pod 'Alamofire', '~> 4.5'
+    pod 'RealmSwift'
+    pod 'SwiftyJSON'
+    pod 'DateToolsSwift'
+    pod 'XCGLogger', '~> 6.0.2'
+    pod 'Toast-Swift', '~> 3.0.1'
+    pod 'PKHUD', '~> 5.0'
+    pod 'JWTDecode', '~> 2.1'
+end
+
+target 'iOSMobileGithubTest' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  # Pods for Quote Slapper
+    shared_pods
+end
+
+target 'iOSMobileGithubTestTests' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    # Pods for testing
+    shared_pods
+end
+
+target 'iOSMobileGithubTestUITests' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    # Pods for testing
+    shared_pods
+end
