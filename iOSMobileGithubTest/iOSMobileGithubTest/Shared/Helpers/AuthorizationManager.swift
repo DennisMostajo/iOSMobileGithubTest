@@ -82,6 +82,13 @@ open class AuthorizationManager: SessionManager {
         return request
     }
     
+    /**
+    I have been presented with several issues about authorizations for which this method will be improved in the future
+     ## Important ##
+     For more information check:
+     - https://developer.github.com/apps/managing-oauth-apps/troubleshooting-authorization-request-errors/
+     - https://developer.github.com/apps/managing-oauth-apps/troubleshooting-oauth-app-access-token-request-errors/
+     */
     func refreshTokens()
     {
         // TODO: Check GitHub updates about tokens and authorizations differences on API V3

@@ -8,12 +8,25 @@
 
 let SERVER_URL = "https://developer.github.com/v3"
 let API_URL = "https://api.github.com"
+
 //----------------------------------------------------------------------//
 //                        GitHub Credentials
 //----------------------------------------------------------------------//
-let CLIENT_ID = "641dcd146387d472e8b3"
-let SECRET_ID = "21136397105481e58590d2ccc9628b66fdd7e3d6"
-let PERSONAL_ACCESS_TOKEN = "2cdcaf2015dd34bdec09904ed00d603399dfc49b"
+/*
+ client_id and secret_id are not necessary at the moment but I will apply
+ in the future
+ - https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
+ */
+let CLIENT_ID = "" //
+let SECRET_ID = "" //
+//----------------------------------------------------------------------//
+/**
+ Personal access tokens function like ordinary OAuth access tokens. They can be used instead of a password for Git over HTTPS, or can be used to authenticate to the API over Basic Authentication..
+ ## Important ##
+ Need an API token for scripts or testing? Generate a personal access token for quick access to the GitHub API on https://github.com/settings/tokens.
+ 
+ */
+let PERSONAL_ACCESS_TOKEN = "" //
 //----------------------------------------------------------------------//
 
 import UIKit
