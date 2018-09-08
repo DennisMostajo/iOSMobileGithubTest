@@ -19,6 +19,7 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource,userC
     let titleLabel = UILabel(frame:CGRect(x:45, y:12, width:180, height:21))
     
     @IBOutlet var table: UITableView!
+    @IBOutlet var nextBtn: UIButton!
     
     var reachability: Reachability!
     fileprivate var offlineToast: UIView!
@@ -38,6 +39,7 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource,userC
         self.table.separatorColor = UIColor.white
         self.setupCustomNavigationBar()
         self.checkConnections()
+        self.checkNextButtonEnable()
         self.loadUsersFromGitHub()
     }
 
@@ -132,6 +134,25 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource,userC
         }
     }
     
+    func getQueryStringParameter(url: String, param: String) -> String? {
+        guard let url = URLComponents(string: url) else { return nil }
+        return url.queryItems?.first(where: { $0.name == param })?.value
+    }
+    
+    func checkNextButtonEnable()
+    {
+        if (StorageHelper.getNext_url_pagination() == "" || StorageHelper.getNext_url_pagination() == nil)
+        {
+            self.nextBtn.isEnabled = false
+            self.nextBtn.setTitleColor(UIColor.init(hex:0x526975 ), for: .normal)
+        }
+        else
+        {
+            self.nextBtn.isEnabled = true
+            self.nextBtn.setTitleColor(UIColor.white, for: .normal)
+        }
+    }
+    
     // MARK: - Requests
     
     func loadUsersFromGitHub()
@@ -145,6 +166,8 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource,userC
 //                debugPrint("getAllUsers response:\(json)")
                 if responseRequest?.statusCode == 200
                 {
+                    DataBaseHelper.clearDatabase()
+                    self.usersFromDataBase = nil
                     if json.arrayValue.count == 0
                     {
                         self.view.makeToast(NSLocalizedString("MESSAGE_SEARCH_NOT_FOUND", comment: "not found message"))
@@ -173,17 +196,14 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource,userC
                         })
                         if let nextPagePath = dictionary["rel=\"next\""] {
                             debugPrint("nextPagePath: \(nextPagePath)")
+                            StorageHelper.setNext_url_pagination(nextPagePath)
                         }
                         
-                        if let lastPagePath = dictionary["rel=\"last\""] {
-                            debugPrint("lastPagePath: \(lastPagePath)")
-                        }
-                        if let firstPagePath = dictionary["rel=\"first\""] {
-                            debugPrint("firstPagePath: \(firstPagePath)")
-                        }
                         if let prevPagePath = dictionary["rel=\"prev\""] {
                             debugPrint("prevPagePath: \(prevPagePath)")
+                            StorageHelper.setPrev_url_pagination(prevPagePath)
                         }
+                        self.checkNextButtonEnable()
                     }
                 }
                 self.view.hideToastActivity()
@@ -194,6 +214,75 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource,userC
                 debugPrint("error:\(error)")
                 self.view.hideToastActivity()
         })
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func nextAction()
+    {
+        let since = self.getQueryStringParameter(url: StorageHelper.getNext_url_pagination()!, param: "since")
+        self.view.makeToastActivity(.center)
+        _ = NetworkManager.manager.startRequest(GitHubAPI.getUsersNextPagination(since: since!), success:
+            {
+                responseRequest,responseData in
+                debugPrint("getUsersNextPagination StatusCode:\(String(describing: responseRequest?.statusCode))")
+                let json = try! JSON(data: responseData! as! Data)
+                //                debugPrint("getUsersNextPagination response:\(json)")
+                if responseRequest?.statusCode == 200
+                {
+                    DataBaseHelper.clearDatabase()
+                    self.usersFromDataBase = nil
+                    if json.arrayValue.count == 0
+                    {
+                        self.view.makeToast(NSLocalizedString("MESSAGE_SEARCH_NOT_FOUND", comment: "not found message"))
+                    }
+                    else
+                    {
+                        for userJson in json.arrayValue
+                        {
+                            let user = User.fromJson(userJson)
+                            DataBaseHelper.createOrUpdateUser(user)
+                        }
+                        self.usersFromDataBase = DataBaseHelper.getUsers()
+                        self.table.reloadData()
+                    }
+                    let headers = responseRequest?.allHeaderFields as? [String:String]
+                    //                    debugPrint("headers:\(String(describing: headers))")
+                    if let link = headers!["Link"]
+                    {
+                        debugPrint("Link Pagination Users:\(link)")
+                        let links = link.components(separatedBy: ",")
+                        var dictionary: [String: String] = [:]
+                        links.forEach({
+                            let components = $0.components(separatedBy: "; ")
+                            let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
+                            dictionary[components[1]] = cleanPath
+                        })
+                        if let nextPagePath = dictionary["rel=\"next\""] {
+                            debugPrint("nextPagePath: \(nextPagePath)")
+                            StorageHelper.setNext_url_pagination(nextPagePath)
+                        }
+                        
+                        if let prevPagePath = dictionary["rel=\"prev\""] {
+                            debugPrint("prevPagePath: \(prevPagePath)")
+                            StorageHelper.setPrev_url_pagination(prevPagePath)
+                        }
+                        self.checkNextButtonEnable()
+                    }
+                }
+                self.view.hideToastActivity()
+        },
+                                                failure:
+            {
+                _, _, error in
+                debugPrint("error:\(error)")
+                self.view.hideToastActivity()
+        })
+    }
+    
+    @IBAction func firstAction()
+    {
+       self.loadUsersFromGitHub()
     }
     
     // MARK: - UITableView

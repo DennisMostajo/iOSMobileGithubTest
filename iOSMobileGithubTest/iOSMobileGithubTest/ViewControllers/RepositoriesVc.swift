@@ -50,6 +50,11 @@ class RepositoriesVc: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.hideNavBarItems()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        DataBaseHelper.deleteRepositoriesFromUser(self.userId)
+    }
+    
     // MARK: - Methods
     
     func setupChildCustomNavigationBar()

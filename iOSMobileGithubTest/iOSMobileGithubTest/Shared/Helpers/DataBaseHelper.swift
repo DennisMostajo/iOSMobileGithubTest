@@ -114,6 +114,32 @@ class DataBaseHelper {
     
     //MARK: Delete Methods
     
+    class func deleteRepositoriesFromUser(_ user_id: Int) {
+        do {
+            let realm = try Realm()
+            realm.refresh()
+            try realm.write {
+                realm.delete(realm.objects(Repository.self).filter("user_id = %@", user_id))
+                debugPrint("repositories from user:\(user_id) deleted")
+            }
+        } catch {
+            debugPrint("Error trying to deleting repositories from user:\(user_id)")
+        }
+    }
+    
+    class func clearDatabase() {
+        do {
+            let realm = try Realm()
+            realm.refresh()
+            try realm.write {
+                realm.deleteAll()
+                debugPrint("all Database cleaned")
+            }
+        } catch {
+            debugPrint("Error trying to clear the database")
+        }
+    }
+    
     //MARK: Migrations
     class func DBUpdate()
     {

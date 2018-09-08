@@ -13,7 +13,7 @@ let API_URL = "https://api.github.com"
 //----------------------------------------------------------------------//
 let CLIENT_ID = "641dcd146387d472e8b3"
 let SECRET_ID = "21136397105481e58590d2ccc9628b66fdd7e3d6"
-let PERSONAL_ACCESS_TOKEN = "51bfc08f70ca149cbf78a59319f1940cab7a19a3"
+let PERSONAL_ACCESS_TOKEN = "6fac61ca1fd80c8e95e52d0d47238c0aa4b3f282"
 //----------------------------------------------------------------------//
 
 import UIKit
@@ -29,6 +29,7 @@ enum GitHubAPI: URLRequestConvertible
     case getUser(email:String)
     case getAllUsers
     case getRepositoriesFromUser(userName:String)
+    case getUsersNextPagination(since:String)
     
     var method: Alamofire.HTTPMethod
     {
@@ -53,6 +54,8 @@ enum GitHubAPI: URLRequestConvertible
             return "users"
         case .getRepositoriesFromUser(let userName):
             return "users/\(userName)/repos"
+        case .getUsersNextPagination:
+            return "users"
         }
     }
     
@@ -77,10 +80,28 @@ enum GitHubAPI: URLRequestConvertible
                 break
             case .getRepositoriesFromUser:
                 break
+            case .getUsersNextPagination(let since):
+                parameters["since"] = since as AnyObject
         }
         parameters["access_token"] = PERSONAL_ACCESS_TOKEN as AnyObject
         debugPrint(parameters)
         let encoding = URLEncoding.methodDependent
         return try! encoding.encode(request, with: parameters)
+    }
+}
+
+extension URL {
+    
+    public var queryParameters: [String: String]? {
+        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: true), let queryItems = components.queryItems else {
+            return nil
+        }
+        
+        var parameters = [String: String]()
+        for item in queryItems {
+            parameters[item.name] = item.value
+        }
+        
+        return parameters
     }
 }
