@@ -8,13 +8,13 @@
 
 let SERVER_URL = "https://developer.github.com/v3"
 let API_URL = "https://api.github.com"
-//------------------------------------------------------//
-//                  GitHub Credentials
-//------------------------------------------------------//
+//----------------------------------------------------------------------//
+//                        GitHub Credentials
+//----------------------------------------------------------------------//
 let CLIENT_ID = "641dcd146387d472e8b3"
 let SECRET_ID = "21136397105481e58590d2ccc9628b66fdd7e3d6"
-let PERSONAL_ACCESS_TOKEN = "c7c6916e721134cf6939d6bfd02507056fb3a59c"
-//------------------------------------------------------//
+let PERSONAL_ACCESS_TOKEN = "a0f75f866f03583a94c11f1e7ee54f1f021b189a"
+//----------------------------------------------------------------------//
 
 import UIKit
 import Foundation
@@ -25,6 +25,7 @@ enum GitHubAPI: URLRequestConvertible
 {
     static let baseURLString = API_URL
     
+    case createNewAuthorization
     case getUser(email:String)
     case getAllUsers
     
@@ -32,6 +33,8 @@ enum GitHubAPI: URLRequestConvertible
     {
         switch self
         {
+        case .createNewAuthorization:
+            return .post
         default:
             return .get
         }
@@ -41,6 +44,8 @@ enum GitHubAPI: URLRequestConvertible
     {
         switch self
         {
+        case .createNewAuthorization:
+            return "authorizations"
         case .getUser(let email):
             return "users/:\(email)"
         case .getAllUsers:
@@ -59,6 +64,10 @@ enum GitHubAPI: URLRequestConvertible
         
         switch self
         {
+            case .createNewAuthorization:
+                parameters["note"] = "personal access token" as AnyObject
+                parameters["client_id"] = CLIENT_ID as AnyObject
+                parameters["client_secret"] = SECRET_ID as AnyObject
             case .getUser(let email):
                 parameters["email"] = email as AnyObject
             case .getAllUsers:
