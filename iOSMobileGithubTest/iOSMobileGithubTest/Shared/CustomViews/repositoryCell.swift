@@ -23,6 +23,15 @@ class repositoryCell: UITableViewCell {
     var cellDelegate:repositoryCellDelegate?
     var repositoryId = 0
     
+    /**
+     For show Link Repository properly.
+     
+     ## Important Keys ##
+     1. Font is recommendable with size 12.0.
+     2. ForegroundColor is recommendable be white.
+     3. UnderlineStyle is recommendable be single.
+     
+     */
     let attributesForRepoLink : [NSAttributedStringKey : Any] = [
         NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12.0),
         NSAttributedStringKey.foregroundColor : UIColor.white,
@@ -40,6 +49,9 @@ class repositoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    /**
+     Action for show Repositories User
+     */
     @IBAction func buttonPressedRepo() {
         cellDelegate?.didPressRepositoryLink(repositoryId)
     }

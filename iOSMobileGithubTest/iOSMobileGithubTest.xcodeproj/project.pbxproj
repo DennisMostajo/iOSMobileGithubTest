@@ -10,26 +10,20 @@
 		70F5606E9A23E7411CF90612 /* Pods_iOSMobileGithubTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E13986B591CB19BCBE4D5 /* Pods_iOSMobileGithubTestTests.framework */; };
 		ACC701477B6782CCEB14A83E /* Pods_iOSMobileGithubTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3B3B8F5DE11FF1D8877961 /* Pods_iOSMobileGithubTest.framework */; };
 		B059751021431DE6007C5065 /* userCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059750F21431DE6007C5065 /* userCell.swift */; };
-		B059751121431DE6007C5065 /* userCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059750F21431DE6007C5065 /* userCell.swift */; };
 		B059751221431DE6007C5065 /* userCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059750F21431DE6007C5065 /* userCell.swift */; };
 		B059751421431E00007C5065 /* repositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751321431E00007C5065 /* repositoryCell.swift */; };
-		B059751521431E00007C5065 /* repositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751321431E00007C5065 /* repositoryCell.swift */; };
 		B059751621431E00007C5065 /* repositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751321431E00007C5065 /* repositoryCell.swift */; };
 		B059751B21433C57007C5065 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751A21433C57007C5065 /* User.swift */; };
-		B059751C21433C57007C5065 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751A21433C57007C5065 /* User.swift */; };
-		B059751D21433C57007C5065 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751A21433C57007C5065 /* User.swift */; };
 		B0597520214352A5007C5065 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751F214352A5007C5065 /* Reachability.swift */; };
-		B0597521214352A5007C5065 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751F214352A5007C5065 /* Reachability.swift */; };
 		B0597522214352A5007C5065 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751F214352A5007C5065 /* Reachability.swift */; };
 		B059752D21435583007C5065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B059753121435583007C5065 /* Localizable.strings */; };
 		B059752E21435583007C5065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B059753121435583007C5065 /* Localizable.strings */; };
 		B059752F21435583007C5065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B059753121435583007C5065 /* Localizable.strings */; };
 		B05975342143941F007C5065 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05975332143941F007C5065 /* Repository.swift */; };
-		B05975352143941F007C5065 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05975332143941F007C5065 /* Repository.swift */; };
-		B05975362143941F007C5065 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05975332143941F007C5065 /* Repository.swift */; };
 		B059753C21442E53007C5065 /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059753B21442E53007C5065 /* StorageHelper.swift */; };
-		B059753D21442E53007C5065 /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059753B21442E53007C5065 /* StorageHelper.swift */; };
 		B059753E21442E53007C5065 /* StorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059753B21442E53007C5065 /* StorageHelper.swift */; };
+		B059754221445BF1007C5065 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B059751A21433C57007C5065 /* User.swift */; };
+		B059754421445BF5007C5065 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05975332143941F007C5065 /* Repository.swift */; };
 		B0D8EA692142C68300A5E478 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA682142C68300A5E478 /* AppDelegate.swift */; };
 		B0D8EA6E2142C68300A5E478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0D8EA6C2142C68300A5E478 /* Main.storyboard */; };
 		B0D8EA702142C68600A5E478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0D8EA6F2142C68600A5E478 /* Assets.xcassets */; };
@@ -37,22 +31,16 @@
 		B0D8EA7E2142C68600A5E478 /* iOSMobileGithubTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA7D2142C68600A5E478 /* iOSMobileGithubTestTests.swift */; };
 		B0D8EA892142C68600A5E478 /* iOSMobileGithubTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA882142C68600A5E478 /* iOSMobileGithubTestUITests.swift */; };
 		B0D8EA992142D8F100A5E478 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA982142D8F100A5E478 /* NetworkManager.swift */; };
-		B0D8EA9A2142D8F100A5E478 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA982142D8F100A5E478 /* NetworkManager.swift */; };
 		B0D8EA9B2142D8F100A5E478 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA982142D8F100A5E478 /* NetworkManager.swift */; };
 		B0D8EA9D2142D90800A5E478 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA9C2142D90800A5E478 /* AuthorizationManager.swift */; };
-		B0D8EA9E2142D90800A5E478 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA9C2142D90800A5E478 /* AuthorizationManager.swift */; };
 		B0D8EA9F2142D90800A5E478 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EA9C2142D90800A5E478 /* AuthorizationManager.swift */; };
 		B0D8EAA12142D92D00A5E478 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA02142D92D00A5E478 /* GitHubAPI.swift */; };
-		B0D8EAA22142D92D00A5E478 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA02142D92D00A5E478 /* GitHubAPI.swift */; };
 		B0D8EAA32142D92D00A5E478 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA02142D92D00A5E478 /* GitHubAPI.swift */; };
 		B0D8EAA52142D97500A5E478 /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA42142D97500A5E478 /* DataBaseHelper.swift */; };
-		B0D8EAA62142D97500A5E478 /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA42142D97500A5E478 /* DataBaseHelper.swift */; };
 		B0D8EAA72142D97500A5E478 /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA42142D97500A5E478 /* DataBaseHelper.swift */; };
 		B0D8EAAA214314B300A5E478 /* UsersVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA9214314B300A5E478 /* UsersVc.swift */; };
-		B0D8EAAB214314B300A5E478 /* UsersVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA9214314B300A5E478 /* UsersVc.swift */; };
 		B0D8EAAC214314B300A5E478 /* UsersVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAA9214314B300A5E478 /* UsersVc.swift */; };
 		B0D8EAAE214314CA00A5E478 /* RepositoriesVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAAD214314CA00A5E478 /* RepositoriesVc.swift */; };
-		B0D8EAAF214314CA00A5E478 /* RepositoriesVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAAD214314CA00A5E478 /* RepositoriesVc.swift */; };
 		B0D8EAB0214314CA00A5E478 /* RepositoriesVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8EAAD214314CA00A5E478 /* RepositoriesVc.swift */; };
 		DFE429F8D83D693394C52BF1 /* Pods_iOSMobileGithubTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4938CA2E7720B015FA8C8223 /* Pods_iOSMobileGithubTestUITests.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +83,7 @@
 		B059753221435589007C5065 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B05975332143941F007C5065 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		B059753B21442E53007C5065 /* StorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHelper.swift; sourceTree = "<group>"; };
+		B059753F21445882007C5065 /* MainEndPointsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEndPointsTests.swift; sourceTree = "<group>"; };
 		B0D8EA652142C68300A5E478 /* iOSMobileGithubTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSMobileGithubTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D8EA682142C68300A5E478 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0D8EA6D2142C68300A5E478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -218,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				B0D8EA7D2142C68600A5E478 /* iOSMobileGithubTestTests.swift */,
+				B059753F21445882007C5065 /* MainEndPointsTests.swift */,
 				B0D8EA7F2142C68600A5E478 /* Info.plist */,
 			);
 			path = iOSMobileGithubTestTests;
@@ -605,19 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B059751521431E00007C5065 /* repositoryCell.swift in Sources */,
-				B059751121431DE6007C5065 /* userCell.swift in Sources */,
-				B0D8EA9A2142D8F100A5E478 /* NetworkManager.swift in Sources */,
-				B0D8EAAF214314CA00A5E478 /* RepositoriesVc.swift in Sources */,
 				B0D8EA7E2142C68600A5E478 /* iOSMobileGithubTestTests.swift in Sources */,
-				B0D8EA9E2142D90800A5E478 /* AuthorizationManager.swift in Sources */,
-				B0D8EAA22142D92D00A5E478 /* GitHubAPI.swift in Sources */,
-				B0597521214352A5007C5065 /* Reachability.swift in Sources */,
-				B059753D21442E53007C5065 /* StorageHelper.swift in Sources */,
-				B0D8EAA62142D97500A5E478 /* DataBaseHelper.swift in Sources */,
-				B059751C21433C57007C5065 /* User.swift in Sources */,
-				B0D8EAAB214314B300A5E478 /* UsersVc.swift in Sources */,
-				B05975352143941F007C5065 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,16 +606,16 @@
 				B059751621431E00007C5065 /* repositoryCell.swift in Sources */,
 				B059751221431DE6007C5065 /* userCell.swift in Sources */,
 				B0D8EA9B2142D8F100A5E478 /* NetworkManager.swift in Sources */,
+				B059754421445BF5007C5065 /* Repository.swift in Sources */,
 				B0D8EAB0214314CA00A5E478 /* RepositoriesVc.swift in Sources */,
 				B0D8EA892142C68600A5E478 /* iOSMobileGithubTestUITests.swift in Sources */,
 				B0D8EA9F2142D90800A5E478 /* AuthorizationManager.swift in Sources */,
 				B0D8EAA32142D92D00A5E478 /* GitHubAPI.swift in Sources */,
 				B0597522214352A5007C5065 /* Reachability.swift in Sources */,
+				B059754221445BF1007C5065 /* User.swift in Sources */,
 				B059753E21442E53007C5065 /* StorageHelper.swift in Sources */,
 				B0D8EAA72142D97500A5E478 /* DataBaseHelper.swift in Sources */,
-				B059751D21433C57007C5065 /* User.swift in Sources */,
 				B0D8EAAC214314B300A5E478 /* UsersVc.swift in Sources */,
-				B05975362143941F007C5065 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

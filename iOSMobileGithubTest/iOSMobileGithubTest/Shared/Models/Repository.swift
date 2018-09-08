@@ -25,6 +25,9 @@ class Repository: Object
         return "id"
     }
     
+    /**
+     This method parse the Repository information from JSON and return a Realm Repository Object.
+     */
     static func fromJson(_ json:JSON) -> Repository
     {
         let repository = Repository()

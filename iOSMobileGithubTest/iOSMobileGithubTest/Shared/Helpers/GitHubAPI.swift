@@ -13,7 +13,7 @@ let API_URL = "https://api.github.com"
 //----------------------------------------------------------------------//
 let CLIENT_ID = "641dcd146387d472e8b3"
 let SECRET_ID = "21136397105481e58590d2ccc9628b66fdd7e3d6"
-let PERSONAL_ACCESS_TOKEN = "6fac61ca1fd80c8e95e52d0d47238c0aa4b3f282"
+let PERSONAL_ACCESS_TOKEN = "2cdcaf2015dd34bdec09904ed00d603399dfc49b"
 //----------------------------------------------------------------------//
 
 import UIKit

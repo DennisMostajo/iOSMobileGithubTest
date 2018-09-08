@@ -23,6 +23,9 @@ class User: Object
         return "id"
     }
     
+    /**
+     This method parse the User information from JSON and return a Realm User Object.
+     */
     static func fromJson(_ json:JSON) -> User
     {
         let user = User()

@@ -9,6 +9,29 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>iOSMobileGithubTestTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B0D8EA642142C68300A5E478</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0D8EA782142C68600A5E478</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0D8EA832142C68600A5E478</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

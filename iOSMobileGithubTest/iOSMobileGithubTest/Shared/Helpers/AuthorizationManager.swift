@@ -84,6 +84,7 @@ open class AuthorizationManager: SessionManager {
     
     func refreshTokens()
     {
-        //TODO: Improve refresh GitHub tokens authorizations
+        // TODO: Check GitHub updates about tokens and authorizations differences on API V3
+        // TODO: Improve and Update Authorization Manager handling tokens authorizations
     }
 }

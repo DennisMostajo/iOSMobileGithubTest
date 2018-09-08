@@ -12,6 +12,7 @@ import Alamofire
 class NetworkManager: NSObject
 {
     static let policy = ServerTrustPolicy.pinCertificates(certificates: ServerTrustPolicy.certificates(), validateCertificateChain: true, validateHost: true)
+    
     static let serverTrustPolicies: [String: ServerTrustPolicy] = [
         "developer.github.com": .disableEvaluation, // for test access development API
         "api.github.com": .disableEvaluation // for test API
