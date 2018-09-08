@@ -8,13 +8,26 @@
 
 import UIKit
 
+protocol repositoryCellDelegate : class {
+    func didPressRepositoryLink(_ repositoryId: Int)
+}
+
 class repositoryCell: UITableViewCell {
 
     @IBOutlet var repoNameLbl: UILabel!
     @IBOutlet var repoDescriptionLbl: UILabel!
-    @IBOutlet var cantRepoIssuesLbl: UILabel!
+    @IBOutlet var repoLinkBtn: UIButton!
     @IBOutlet var cantRepoIssuesOpenLbl: UILabel!
     @IBOutlet var cantRepoForksLbl: UILabel!
+    
+    var cellDelegate:repositoryCellDelegate?
+    var repositoryId = 0
+    
+    let attributesForRepoLink : [NSAttributedStringKey : Any] = [
+        NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12.0),
+        NSAttributedStringKey.foregroundColor : UIColor.white,
+        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue
+    ]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,4 +40,7 @@ class repositoryCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func buttonPressedRepo() {
+        cellDelegate?.didPressRepositoryLink(repositoryId)
+    }
 }

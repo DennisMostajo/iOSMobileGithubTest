@@ -38,6 +38,21 @@ class DataBaseHelper {
         }
     }
     
+    class func createOrUpdateRepository(_ repository: Repository)
+    {
+        do {
+            let realm = try Realm()
+            realm.refresh()
+            try realm.write {
+                realm.create(Repository.self, value: repository, update: true)
+                debugPrint("--->Repository added or updated: \(repository.id)")
+            }
+            
+        } catch {
+            debugPrint("Error creating or updating Repository")
+        }
+    }
+    
     //MARK: Get Methods
     
     class func getUsers() -> Results<User>?
@@ -50,7 +65,52 @@ class DataBaseHelper {
         }
     }
     
-    //MARK: Set Methods
+    class func getUserById(user_id:Int) -> User?
+    {
+        do
+        {
+            let realm = try Realm()
+            return realm.object(ofType: User.self, forPrimaryKey: user_id)
+        }
+        catch
+        {
+            return nil
+        }
+    }
+    
+    class func getRepositories() -> Results<Repository>?
+    {
+        do {
+            let realm = try Realm()
+            return realm.objects(Repository.self).sorted(byKeyPath: "id", ascending: true)
+        } catch {
+            return nil
+        }
+    }
+    
+    class func getRepositoryById(repository_id:Int) -> Repository?
+    {
+        do
+        {
+            let realm = try Realm()
+            return realm.object(ofType: Repository.self, forPrimaryKey: repository_id)
+        }
+        catch
+        {
+            return nil
+        }
+    }
+    
+    class func getRepositoriesByUserId(user_id:Int) -> Results<Repository>? {
+        do {
+            let realm = try Realm()
+            return realm.objects(Repository.self).filter("user_id = %@",user_id).sorted(byKeyPath: "id", ascending: true)
+        } catch {
+            return nil
+        }
+    }
+    
+    //MARK: Update Methods
     
     //MARK: Delete Methods
     

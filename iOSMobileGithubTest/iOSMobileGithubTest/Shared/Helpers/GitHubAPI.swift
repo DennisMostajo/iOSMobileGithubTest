@@ -13,7 +13,7 @@ let API_URL = "https://api.github.com"
 //----------------------------------------------------------------------//
 let CLIENT_ID = "641dcd146387d472e8b3"
 let SECRET_ID = "21136397105481e58590d2ccc9628b66fdd7e3d6"
-let PERSONAL_ACCESS_TOKEN = "a0f75f866f03583a94c11f1e7ee54f1f021b189a"
+let PERSONAL_ACCESS_TOKEN = "51bfc08f70ca149cbf78a59319f1940cab7a19a3"
 //----------------------------------------------------------------------//
 
 import UIKit
@@ -28,6 +28,7 @@ enum GitHubAPI: URLRequestConvertible
     case createNewAuthorization
     case getUser(email:String)
     case getAllUsers
+    case getRepositoriesFromUser(userName:String)
     
     var method: Alamofire.HTTPMethod
     {
@@ -50,6 +51,8 @@ enum GitHubAPI: URLRequestConvertible
             return "users/:\(email)"
         case .getAllUsers:
             return "users"
+        case .getRepositoriesFromUser(let userName):
+            return "users/\(userName)/repos"
         }
     }
     
@@ -71,6 +74,8 @@ enum GitHubAPI: URLRequestConvertible
             case .getUser(let email):
                 parameters["email"] = email as AnyObject
             case .getAllUsers:
+                break
+            case .getRepositoriesFromUser:
                 break
         }
         parameters["access_token"] = PERSONAL_ACCESS_TOKEN as AnyObject

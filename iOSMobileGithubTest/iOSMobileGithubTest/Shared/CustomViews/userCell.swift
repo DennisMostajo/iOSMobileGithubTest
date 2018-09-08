@@ -8,12 +8,20 @@
 
 import UIKit
 
+protocol userCellDelegate : class {
+    func didPressProfile(_ userId: Int)
+    func didPressRepositories(_ userId: Int)
+}
+
 class userCell: UITableViewCell {
     
     @IBOutlet var userImgAvatar: UIImageView!
     @IBOutlet var userNameLbl: UILabel!
     @IBOutlet var linkProfile: UIButton!
     @IBOutlet var linkRepositories: UIButton!
+    
+    var cellDelegate:userCellDelegate?
+    var userId = 0
     
     let attributesForProfile : [NSAttributedStringKey : Any] = [
         NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12.0),
@@ -36,5 +44,12 @@ class userCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func buttonPressedProfile() {
+        cellDelegate?.didPressProfile(userId)
+    }
+    @IBAction func buttonPressedRepositories() {
+        cellDelegate?.didPressRepositories(userId)
     }
 }

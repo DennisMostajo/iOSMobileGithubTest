@@ -9,3 +9,4 @@
 "SECTION_TITLE" = "Usuarios de GitHub";
 "REPOSITORIES_TITLE" = "Repositorios del Usuario";
 "REPO" = "Repositorios";
+"MESSAGE_SEARCH_NOT_FOUND" = "No se encontró información";

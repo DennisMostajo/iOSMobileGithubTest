@@ -13,7 +13,7 @@ import DateToolsSwift
 import JWTDecode
 import Toast_Swift
 
-class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource,userCellDelegate {
 
     let imgView = UIImageView(frame: CGRect(x: 8, y: 6, width: 33, height: 33))
     let titleLabel = UILabel(frame:CGRect(x:45, y:12, width:180, height:21))
@@ -142,7 +142,7 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource {
                 responseRequest,responseData in
                 debugPrint("getAllUsers StatusCode:\(String(describing: responseRequest?.statusCode))")
                 let json = try! JSON(data: responseData! as! Data)
-                debugPrint("getAllUsers response:\(json)")
+//                debugPrint("getAllUsers response:\(json)")
                 if responseRequest?.statusCode == 200
                 {
                     if json.arrayValue.count == 0
@@ -160,10 +160,30 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource {
                         self.table.reloadData()
                     }
                     let headers = responseRequest?.allHeaderFields as? [String:String]
-                    debugPrint("headers:\(String(describing: headers))")
+//                    debugPrint("headers:\(String(describing: headers))")
                     if let link = headers!["Link"]
                     {
-                        debugPrint("Link:\(link)")
+                        debugPrint("Link Pagination Users:\(link)")
+                        let links = link.components(separatedBy: ",")
+                        var dictionary: [String: String] = [:]
+                        links.forEach({
+                            let components = $0.components(separatedBy: "; ")
+                            let cleanPath = components[0].trimmingCharacters(in: CharacterSet(charactersIn: "<>"))
+                            dictionary[components[1]] = cleanPath
+                        })
+                        if let nextPagePath = dictionary["rel=\"next\""] {
+                            debugPrint("nextPagePath: \(nextPagePath)")
+                        }
+                        
+                        if let lastPagePath = dictionary["rel=\"last\""] {
+                            debugPrint("lastPagePath: \(lastPagePath)")
+                        }
+                        if let firstPagePath = dictionary["rel=\"first\""] {
+                            debugPrint("firstPagePath: \(firstPagePath)")
+                        }
+                        if let prevPagePath = dictionary["rel=\"prev\""] {
+                            debugPrint("prevPagePath: \(prevPagePath)")
+                        }
                     }
                 }
                 self.view.hideToastActivity()
@@ -251,6 +271,8 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource {
             {
                 case 0:
                 let user = self.usersFromDataBase![indexPath.row]
+                cell.cellDelegate = self
+                cell.userId = user.id
                 cell.userImgAvatar.load(url: Foundation.URL(string: user.avatar_url)!)
                 cell.userNameLbl.text = user.login
                 cell.linkProfile.setAttributedTitle(NSAttributedString(string: user.html_url, attributes: cell.attributesForProfile), for: .normal)
@@ -270,6 +292,28 @@ class UsersVc: UIViewController,UITableViewDelegate, UITableViewDataSource {
            
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK: - UserCellDelegate
+    func didPressProfile(_ userId: Int)
+    {
+        if let user = DataBaseHelper.getUserById(user_id: userId)
+        {
+            if let url = URL(string: user.html_url) {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
+    }
+    
+    func didPressRepositories(_ userId: Int)
+    {
+        if let user = DataBaseHelper.getUserById(user_id: userId)
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "RepositoriesVc") as! RepositoriesVc
+            vc.userId = user.id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
